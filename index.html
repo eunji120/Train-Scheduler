@@ -15,73 +15,64 @@
 <body>
     <div class="container">
         <div class="row">
-            <header class="jumbotron">
+            <div class="col-md-12">
+            <div class="jumbotron">
                 <h1>Anytime is Train Time</h1>
-            </header>
+            </div>
+            </div>
         </div>
 
-        <h4>Current Train Schedule</h4>
         <div class="row">
-                
-            <table>
-                
-                <br>
-                <tr>
-                    <th>Train Name</th>
-                    <th>Destination</th>
-                    <th>Frequency (min)</th>
-                    <th>Next Arrival</th>
-                    <th>Minutes Away</th>
-                </tr>
-                <tr>
-                    <td>abc</td>
-                    <td>abc</td>
-                    <td>abc</td>
-                    <td>abc</td>
-                    <td>abc</td>
-                </tr>
-                <tr>
-                        <td>abc</td>
-                        <td>abc</td>
-                        <td>abc</td>
-                        <td>abc</td>
-                        <td>abc</td>
-                </tr>
-                <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                </tr>
-            </table>
+             <div class="col-md-12"> 
+                 <div class="table-heading">
+                    <h4>Current Train Schedule</h4>
+                 </div>
+                 <div class="table-body"> 
+                    <div id="content">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Train Name</th>
+                                    <th>Destination</th>
+                                    <th>Frequency (min)</th>
+                                    <th>Next Arrival</th>
+                                    <th>Minutes Away</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableContent"></tbody> 
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <br><br>
 
         <div class="row">
-            <section>
-                <h4>Add Train</h4>
-                <form>
-                    <lable>Train Name</lable>
-                    <br>
-                    <input type="text" name="train name" id="name-input">
-                    <br>
-                    <label>Destination</label>
-                    <br>
-                    <input type="text" name="destination" id="destination-input">
-                    <br>
-                    <label>First Train Time (HH:mm - military time)</label>
-                    <br>
-                    <input type="text" name="first train time" id="time-input">
-                    <br>
-                    <label>Frequency (min)</label>
-                    <br>
-                    <input type="text" name="frequency" id="frequency-input">
-                    <br><br>
-                    <input type="submit" id="searchButton" value="Submit">
-                 </form>
-            </section>
+            <div class="col-md-12">
+                <section>
+                    <h4>Add Train</h4>
+                    <form>
+                        <lable>Train Name</lable>
+                        <br>
+                        <input type="text" name="train name" id="name-input">
+                        <br>
+                        <label>Destination</label>
+                        <br>
+                        <input type="text" name="destination" id="destination-input">
+                        <br>
+                        <label>First Train Time (HH:mm - military time)</label>
+                        <br>
+                        <input type="text" name="first train time" id="time-input">
+                        <br>
+                        <label>Frequency (min)</label>
+                        <br>
+                        <input type="text" name="frequency" id="frequency-input">
+                        <br><br>
+                        <input type="submit" id="searchButton" value="Submit">
+                    </form>
+                </section>
+            </div>
         </div>
     </div>
 </body>
