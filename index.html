@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
     <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.22.2/moment.min.js"></script>
     <title>Train Scheduler</title>
 </head>
 <body>
@@ -23,24 +24,26 @@
         </div>
 
         <div class="row">
-             <div class="col-md-12"> 
-                 <div class="table-heading">
-                    <h4>Current Train Schedule</h4>
-                 </div>
-                 <div class="table-body"> 
-                    <div id="content">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Train Name</th>
-                                    <th>Destination</th>
-                                    <th>Frequency (min)</th>
-                                    <th>Next Arrival</th>
-                                    <th>Minutes Away</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tableContent"></tbody> 
-                        </table>
+             <div class="col-md-12">
+                 <div class="panel panel-default"> 
+                    <div class="table-heading">
+                        <h4>Current Train Schedule</h4>
+                    </div>
+                    <div class="table-body"> 
+                        <div id="content">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Train Name</th>
+                                        <th>Destination</th>
+                                        <th>Frequency (min)</th>
+                                        <th>Next Arrival</th>
+                                        <th>Minutes Away</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableContent"></tbody> 
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,28 +53,34 @@
 
         <div class="row">
             <div class="col-md-12">
-                <section>
+                <div class="table-heading">
                     <h4>Add Train</h4>
-                    <form>
-                        <lable>Train Name</lable>
-                        <br>
-                        <input type="text" name="train name" id="name-input">
-                        <br>
-                        <label>Destination</label>
-                        <br>
-                        <input type="text" name="destination" id="destination-input">
-                        <br>
-                        <label>First Train Time (HH:mm - military time)</label>
-                        <br>
-                        <input type="text" name="first train time" id="time-input">
-                        <br>
-                        <label>Frequency (min)</label>
-                        <br>
-                        <input type="text" name="frequency" id="frequency-input">
-                        <br><br>
-                        <input type="submit" id="searchButton" value="Submit">
-                    </form>
-                </section>
+                </div>                
+                    <div class="table-body">
+                        <form id="searchForm">
+                            <div class="form-group">
+                                <lable>Train Name</lable>
+                                <br>
+                                <input type="text" name="train name" id="name-input" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Destination</label>
+                                <br>
+                                <input type="text" name="destination" id="destination-input" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>First Train Time (HH:mm - military time)</label>
+                                <br>
+                                <input type="text" name="first train time" id="time-input" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Frequency (min)</label>
+                                <br>
+                                <input type="number" name="frequency" id="frequency-input" placeholder="">
+                            </div>
+                            <button type="submit" id="searchButton">Submit</button>
+                        </form>
+                    </div>
             </div>
         </div>
     </div>
