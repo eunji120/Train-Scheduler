@@ -65,8 +65,45 @@
 
         var newRow = $("<tr>");
             newRow.addClass("row-" + index);
-        var cell1 = $("<td>").append(updateButton);
-        var cell2 = $("<td>").text(childSnapshot.val().name);
-        var cell3 = $("<td>").text(childSnapshot.val().destination);
-        var cell4 = $("<td>").text(childSnapshot.val().frequency);
-  })
+        var cell1 = $("<td>").text(childSnapshot.val().name);
+        var cell2 = $("<td>").text(childSnapshot.val().destination);
+        var cell3 = $("<td>").text(childSnapshot.val().frequency);
+        var cell4 = $("<td>").text(nextTrain);
+        var cell5 = $("<td>").text(minutesRemaining);
+
+        newRow.append(cell1);
+        newRow.append(cell2);
+        newRow.append(cell3);
+        newRow.append(cell4);
+        newRow.append(cell5);
+
+        $("#tableContent").append(newRow);
+
+        indes++;
+  }, function (error) {
+
+        alert(error.code);
+  });
+
+  function removeRow () {
+      $(".row-" + $(this).attr("data-indes")).remove();
+      database.ref().child($(this).attr("data-key")).remove();
+  };
+
+  function editRow () {
+      $(".row-" + $(this).attr("data-index")).children().eq(1).html("<textarea called='newName'></textarea>");
+      $(".row-" + $(this).attr("data-indes")).children().eq(2).html("<textarea called='newDestination'></textarea>");
+      $(".row-" + $(this).attr("data-indes")).children().eq(3).html("<textarea called='newFrequency' type='number'></textarea>");
+  };
+
+  function submitRow () {
+      var newName = $(".newName").val().trim();
+      var newDestination = $(".newDestination").val().trim();
+      var newFrequency = $(".newFrequency").val().trim();
+
+    database.ref().child($(this).attr("data-key")).child("name").set(newName);
+    database.ref().child($(this).attr("data-key")).child("destination").set(newDestination);
+    database.ref().child($(this).attr("data-key")).child("frequency").set(newFrequency);
+  };
+
+  $(document).on("click", "#submitButton", submitRow);
