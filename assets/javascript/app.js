@@ -11,6 +11,8 @@
 
   var database = firebase.database();
 
+  var index = 0;
+
   $('#searchForm').on('submit', function (event) {
       devent.preventDefault();
 
@@ -33,4 +35,38 @@
 
     return false;
   });
-  
+
+  database.ref().orderByChild("dateAdded").on("child_added", function (childSnapshot) {
+    
+    var firstTime = childSnapshot.val().firstTime;
+    var tFrequency = parseInt(childSnapshot.val().frequency);
+    var firstTrain = moment(firstTime, "HH:mm").subtract(1, "years");
+    console.log(firstTrain);
+    console.log(firstTime);
+    var currentTime = moment();
+    var currentTimeCalc = moment().subtract(1, "years");
+    var diffTime = moment().diff(moment(firstTrain), "minutes");
+    var tRemainder = diffTime%tFrequency;
+    var minutesRemaining = tFrequency - tRemainder;
+    var nextTrain = moment().add(minutesRemaining, "minutes").format ("hh:mm A");
+    var beforeCalc = moment(firstTrain).diff(currentTimeCalc, "minutes");
+    var beforeMinutes = Math.ceil(moment.duration(beforeCalc).asMinutes());
+
+    if ((current - firstTime) < 0) {
+        nextTrain = childSnapshot.val().firstTime;
+        console.log("Before First Train");
+        minutesRemaining = beforeMinutes;
+    }
+    else {
+        nextTrain = moment().add(minutesRemaining, "minutes").format("hh:mm A");
+        minutesRemaining = tFrequency - tRemainder;
+        console.log("Working");
+    }
+
+        var newRow = $("<tr>");
+            newRow.addClass("row-" + index);
+        var cell1 = $("<td>").append(updateButton);
+        var cell2 = $("<td>").text(childSnapshot.val().name);
+        var cell3 = $("<td>").text(childSnapshot.val().destination);
+        var cell4 = $("<td>").text(childSnapshot.val().frequency);
+  })
