@@ -1,9 +1,12 @@
 /* font-family: 'Shrikhand', cursive; */
 /* font-family: 'PT Serif', serif; */
+body {
+    background-image: url(../images/railway1.jpg);
+}
 
 h1 {
     font-size: 3em;
-    color: white;
+    font-family: cursive !important;
 }
 
 
@@ -24,17 +27,8 @@ header {
 
 .jumbotron {
     background-color: rgb(10,100,100);
+    opacity: 50%;
     border-radius: 0;
-}
-
-.card {
-    margin: 25px;
-}
-
-.card-header {
-    background-color: rgb(3, 34, 34);
-    color: white;
-    padding: 24px;
 }
 
 .fas {
