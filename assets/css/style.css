@@ -5,34 +5,20 @@ body {
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 36px;
     font-family: cursive !important;
+    text-align: center;
+    padding: 50px;
 }
-
 
 h4 {
-    font-size: 1.5em;
+    font-family: cursive !important;
+    font-weight: bold;
 }
 
-
-p {
-    font-size: 0.75em;
-}
-
-header {
-    color: white;
-    text-align: center;
-    margin-bottom: 75px;
-}
-
-.jumbotron {
-    background-color: rgb(10,100,100);
-    opacity: 50%;
-    border-radius: 0;
-}
-
-.fas {
-    margin-right: 12px;
+#tableName {
+    font-family: cursive !important;
+    color: white !important;
 }
 
 input {
@@ -41,4 +27,11 @@ input {
 
 #searchbutton {
     margin-right: 12px;
+    padding: 100px;
+}
+
+#searchForm {
+    background-color: azure;
+    opacity: 0.85;
+    padding: 20px;
 }

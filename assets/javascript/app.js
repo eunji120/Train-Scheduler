@@ -1,5 +1,5 @@
 // Initialize Firebase
-  var config = {
+ var config = {
     apiKey: "AIzaSyAAsV_9hYGzCRr51WcVmzkJy6IBg6-0gkY",
     authDomain: "somethingshort-june2018.firebaseapp.com",
     databaseURL: "https://somethingshort-june2018.firebaseio.com",
@@ -14,7 +14,7 @@
   var index = 0;
 
   $('#searchForm').on('submit', function (event) {
-      devent.preventDefault();
+      event.preventDefault();
 
       var name = $("#name-input").val().trim();
       var destination = $("#destination-input").val().trim();
