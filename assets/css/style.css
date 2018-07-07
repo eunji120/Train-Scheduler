@@ -16,7 +16,17 @@ h4 {
     font-weight: bold;
 }
 
-#tableName {
+#content {
+    background-color: navy;
+    padding: 20px;
+    opacity: 0.8;
+}
+
+th, label {
+    color: white !important;
+}
+
+#formName {
     font-family: cursive !important;
     color: white !important;
 }
@@ -31,7 +41,7 @@ input {
 }
 
 #searchForm {
-    background-color: azure;
-    opacity: 0.85;
+    background-color: navy;
     padding: 20px;
+    opacity: 0.8;
 }
