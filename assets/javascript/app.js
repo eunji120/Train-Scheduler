@@ -46,7 +46,6 @@ var index = 0;
     var firstTrain = moment(firstTime, "HH:mm").subtract(1, "years");
     console.log(firstTrain);
     console.log(firstTime);
-    //var currentTime = moment();
     var currentTimeCalc = moment().subtract(1, "years");
     var diffTime = moment().diff(moment(firstTrain), "minutes");
     var tRemainder = diffTime%tFrequency;
