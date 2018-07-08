@@ -13,7 +13,7 @@ h1 {
 
 h4 {
     font-family: cursive !important;
-    font-weight: bold;
+    font-weight: bolder !important;
 }
 
 #content {
@@ -22,7 +22,7 @@ h4 {
     opacity: 0.8;
 }
 
-th, label {
+th, td, label {
     color: white !important;
 }
 
@@ -38,10 +38,12 @@ input {
 #searchbutton {
     margin-right: 12px;
     padding: 100px;
+    
 }
 
 #searchForm {
     background-color: navy;
     padding: 20px;
     opacity: 0.8;
+    margin-bottom: 20%;
 }

@@ -1,3 +1,7 @@
+$("document").ready(function() {
+
+var index = 0;
+
 // Initialize Firebase
  var config = {
     apiKey: "AIzaSyAAsV_9hYGzCRr51WcVmzkJy6IBg6-0gkY",
@@ -11,10 +15,9 @@
 
   var database = firebase.database();
 
-  var index = 0;
-
-  $('#searchForm').on('submit', function (event) {
+  $('#searchForm').submit(function() {
       event.preventDefault();
+      $('#tableContent').show();
 
       var name = $("#name-input").val().trim();
       var destination = $("#destination-input").val().trim();
@@ -33,7 +36,7 @@
     $('#time-input').val("");
     $('#frequency-input').val("");
 
-    return false;
+        return false;
   });
 
   database.ref().orderByChild("dateAdded").on("child_added", function (childSnapshot) {
@@ -43,7 +46,7 @@
     var firstTrain = moment(firstTime, "HH:mm").subtract(1, "years");
     console.log(firstTrain);
     console.log(firstTime);
-    var currentTime = moment();
+    //var currentTime = moment();
     var currentTimeCalc = moment().subtract(1, "years");
     var diffTime = moment().diff(moment(firstTrain), "minutes");
     var tRemainder = diffTime%tFrequency;
@@ -52,7 +55,7 @@
     var beforeCalc = moment(firstTrain).diff(currentTimeCalc, "minutes");
     var beforeMinutes = Math.ceil(moment.duration(beforeCalc).asMinutes());
 
-    if ((current - firstTime) < 0) {
+    if ((currentTimeCalc - firstTime) < 0) {
         nextTrain = childSnapshot.val().firstTime;
         console.log("Before First Train");
         minutesRemaining = beforeMinutes;
@@ -63,6 +66,7 @@
         console.log("Working");
     }
 
+    //Adding new table rows and data
         var newRow = $("<tr>");
             newRow.addClass("row-" + index);
         var cell1 = $("<td>").text(childSnapshot.val().name);
@@ -79,31 +83,36 @@
 
         $("#tableContent").append(newRow);
 
-        indes++;
+        index++;
+
   }, function (error) {
 
         alert(error.code);
   });
 
-  function removeRow () {
-      $(".row-" + $(this).attr("data-indes")).remove();
-      database.ref().child($(this).attr("data-key")).remove();
-  };
+//   function removeRow () {
+//       $(".row-" + $(this).attr("data-index")).remove();
+//       database.ref().child($(this).attr("data-key")).remove();
+//   };
 
-  function editRow () {
-      $(".row-" + $(this).attr("data-index")).children().eq(1).html("<textarea called='newName'></textarea>");
-      $(".row-" + $(this).attr("data-indes")).children().eq(2).html("<textarea called='newDestination'></textarea>");
-      $(".row-" + $(this).attr("data-indes")).children().eq(3).html("<textarea called='newFrequency' type='number'></textarea>");
-  };
+//   function editRow () {
+//       $(".row-" + $(this).attr("data-index")).children().eq(1).html("<textarea called='newName'></textarea>");
+//       $(".row-" + $(this).attr("data-index")).children().eq(2).html("<textarea called='newDestination'></textarea>");
+//       $(".row-" + $(this).attr("data-index")).children().eq(3).html("<textarea called='newFrequency' type='number'></textarea>");
+//   };
 
-  function submitRow () {
-      var newName = $(".newName").val().trim();
-      var newDestination = $(".newDestination").val().trim();
-      var newFrequency = $(".newFrequency").val().trim();
+//   function submitRow () {
+//       var newName = $(".newName").val().trim();
+//       var newDestination = $(".newDestination").val().trim();
+//       var newFrequency = $(".newFrequency").val().trim();
 
-    database.ref().child($(this).attr("data-key")).child("name").set(newName);
-    database.ref().child($(this).attr("data-key")).child("destination").set(newDestination);
-    database.ref().child($(this).attr("data-key")).child("frequency").set(newFrequency);
-  };
+//     database.ref().child($(this).attr("data-key")).child("name").set(newName);
+//     database.ref().child($(this).attr("data-key")).child("destination").set(newDestination);
+//     database.ref().child($(this).attr("data-key")).child("frequency").set(newFrequency);
 
-  $(document).on("click", "#submitButton", submitRow);
+//     $(".row-" + $(this).attr("data-index")).children().eq(1).html(newName);
+//     $(".row-" + $(this).attr("data-index")).children().eq(2).html(newDestination);
+//     $(".row-" + $(this).attr("data-index")).children().eq(3).html(newFrequency);
+//   };
+
+});
